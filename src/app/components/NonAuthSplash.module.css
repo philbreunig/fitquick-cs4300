@@ -1,0 +1,13 @@
+.container {
+  background-image: url(/splashBackground.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+.slogan {
+  color: white;
+  font-size: 75px;
+  width: 50vh;
+  margin-left: 20px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}

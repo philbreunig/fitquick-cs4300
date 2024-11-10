@@ -1,0 +1,35 @@
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: radial-gradient(
+    circle at 12% 0%,
+    #161469,
+    rgb(255, 255, 255),
+    #161469
+  );
+}
+.logo,
+.title,
+.loginGroup {
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-size: 50px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: #161469;
+}
+.logo {
+  height: 100px;
+}
+
+.loginLink {
+  font-size: 15px;
+  color: white;
+}
+.userIcon {
+  height: 25px;
+  margin-left: 2px;
+  color: white;
+}
