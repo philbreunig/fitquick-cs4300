@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 import Nav from "../../components/Nav";
 import WorkoutList from "../../components/WorkoutList";
 import { useState } from "react";
+import Button from "../../components/Button";
 
 type Workout = {
   id: number;
@@ -49,6 +50,7 @@ export default function Home() {
   return (
     <div>
       <Nav username={username as string} url={signout} />
+      <Button />
       <WorkoutList workouts={INIT_WORKOUT} />
     </div>
   );

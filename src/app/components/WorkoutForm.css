@@ -1,52 +1,64 @@
-.container {
-    background-color: #D3C2FF;
-    color: #161469;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 5px black;
-    max-width: 100%;
+.formContainer {
+    position: fixed; /* Fixed position to cover the entire viewport */
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 500px;
-    margin-right: 20px;
-    box-sizing: border-box;
-    flex-grow: 1;
-}
-
-.page-container {
+    height: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  form {
+    position: relative; /* Set this to position the close button relative to the form */
     padding: 20px;
-}
-
-input {
+    background-color: white;
+    border-radius: 8px;
+    width: 400px; /* Adjust the form width as needed */
+  }
+  
+  input,
+  textarea {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid black;
-    font-size: 15px;
-    color: black;
-    background-color: white;
-}
-
-button {
-    background-color: #161469;
-    color:#D3C2FF;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: slategrey;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 15px;
-}
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
 
-button:hover {
-    background-color: #4c3c91;
-}
-
-form {
+  .closeButton {
+    position: absolute; /* Position relative to the form */
+    top: 10px;  /* Adjust distance from the top edge of the form */
+    right: 10px;  /* Adjust distance from the right edge of the form */
+    background-color: red;  /* Choose an appropriate background color */
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 50%;  /* Make the button round */
+    width: 30px;  /* Adjust size */
+    height: 30px;  /* Adjust size */
     display: flex;
-    flex-direction: column;
-}
-
-form div {
-    margin-bottom: 15px;
-}
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;  /* Ensure it's above other elements */
+  }
+  
+  .closeButton:hover {
+    background-color: darkred;  /* Change color on hover */
+  }
