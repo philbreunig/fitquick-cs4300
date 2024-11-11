@@ -19,7 +19,7 @@ export default function Nav({ username, url }: NavProps) {
       </Link>
       <div className={Style.loginGroup}>
         <Link href={url} className={Style.loginLink}>
-          {url === "/" ? "LogOut" : "SignUp/Login"}
+          {url === "/" ? "LogOut" : "Sign-Up/LogIn"}
         </Link>
         <img
           src="/user-icon.png"

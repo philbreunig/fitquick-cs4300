@@ -24,6 +24,9 @@ export default function Signup({ onAddUser }: SignupProps) {
     if (!username || !password) {
       alert("Username and Password are required");
       return;
+    } else if (username.includes(' ')) {
+      alert('Username cannot contain spaces')
+      return;
     }
     const newUser = {
       id: Date.now(),
