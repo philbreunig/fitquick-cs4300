@@ -16,6 +16,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "FitQuick",
   description: "Get Fit Quick!",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
