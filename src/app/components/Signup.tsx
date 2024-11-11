@@ -1,6 +1,7 @@
 import Style from "./Signup.module.css";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type SignupProps = {
   onAddUser: (user: {
@@ -18,14 +19,15 @@ export default function Signup({ onAddUser }: SignupProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [id, setId] = useState("");
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!username || !password) {
       alert("Username and Password are required");
       return;
-    } else if (username.includes(' ')) {
-      alert('Username cannot contain spaces')
+    } else if (username.includes(" ")) {
+      alert("Username cannot contain spaces");
       return;
     }
     const newUser = {
@@ -41,6 +43,7 @@ export default function Signup({ onAddUser }: SignupProps) {
     setUsername("");
     setPassword("");
     setId("");
+    router.push("/Login");
   };
   return (
     <div className={Style.background}>
