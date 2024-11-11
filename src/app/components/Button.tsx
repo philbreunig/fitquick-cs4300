@@ -1,5 +1,6 @@
 import { useState } from "react";
 import WorkoutForm from "./WorkoutForm"; // Import the form
+import "./Button.css";
 
 export default function WorkoutApp() {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -25,8 +26,10 @@ export default function WorkoutApp() {
   };
 
   return (
-    <div>
-      <button onClick={toggleFormVisibility}>Add Workout</button>
+    <div className="button_container">
+      <button className="styled_button" onClick={toggleFormVisibility}>
+        Add Workout
+      </button>
 
       {isFormVisible && (
         <WorkoutForm

@@ -1,0 +1,30 @@
+.button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* Full viewport height */
+    margin-top: 5px;
+  }
+  
+  /* Button styling */
+  .styled_button {
+    background-color: #83d1ec; /* Light blue color */
+    color: white;
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  /* Hover effect */
+  .styled_button:hover {
+    background-color: #277a9a; /* Slightly darker blue */
+    transform: scale(1.05); /* Slight enlargement */
+  }
+  
+  /* Active/click effect */
+  .styled_button:active {
+    transform: scale(0.95); /* Slight shrink */
+  }
