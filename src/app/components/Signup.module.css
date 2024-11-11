@@ -1,0 +1,74 @@
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/splashBackground.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+.container {
+  background: radial-gradient(
+    circle at 12% 0%,
+    #161469,
+    rgb(255, 255, 255),
+    #161469
+  );
+  border-radius: 10px;
+  height: 60vh;
+  width: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.header {
+  font-size: 225%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  padding: 0px;
+  margin: 0px;
+  border-bottom: solid 1px;
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input {
+  display: flex;
+  padding: 10px;
+}
+.inputField {
+  border-radius: 5px;
+  width: 50vh;
+}
+.icon {
+  height: 20px;
+  width: 30px;
+  padding-right: 10px;
+}
+.buttonAndLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.submitButton {
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+  background-color: #671cc8;
+}
+.submitButton:hover {
+  background-color: rgb(161, 160, 160);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}

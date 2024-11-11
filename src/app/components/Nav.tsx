@@ -1,7 +1,12 @@
-import { styleText } from "util";
 import Style from "./Nav.module.css";
+import Link from "next/link";
 
-export default function Nav() {
+type NavProps = {
+  username?: string | null;
+  url: string;
+};
+
+export default function Nav({ username, url }: NavProps) {
   return (
     <div className={Style.banner}>
       <img
@@ -9,11 +14,15 @@ export default function Nav() {
         alt="FitQuickLogo"
         className={Style.logo}
       ></img>
-      <h1 className={Style.title}>FitQuick</h1>
+      <Link href="/" className={Style.title}>
+        {username ? `Welcome, ${username}!` : "FitQuick"}
+      </Link>
       <div className={Style.loginGroup}>
-        <h6 className={Style.loginLink}>CreateUser/Login</h6>
+        <Link href={url} className={Style.loginLink}>
+          {url === "/" ? "LogOut" : "SignUp/Login"}
+        </Link>
         <img
-          src="user-icon.png"
+          src="/user-icon.png"
           alt="User Logo"
           className={Style.userIcon}
         ></img>
