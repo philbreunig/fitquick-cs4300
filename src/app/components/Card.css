@@ -1,0 +1,19 @@
+.card {
+    width: 80%; /* Set the width to 80% of the container */
+    max-width: 800px; /* Optional: Set a maximum width to control size on larger screens */
+    margin: 20px auto; /* Center the card and add vertical spacing */
+    padding: 20px; /* Add padding for spacing inside the card */
+    background-color: #333; /* Background color to make it visible against the dark background */
+    border-radius: 12px; /* Rounded borders */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    color: white; /* Text color for readability */
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    order: 2;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}

@@ -1,0 +1,23 @@
+/* Additional styling for images and text within the card */
+.workout_image {
+    width: 200px; /* Make image take up full width of the card */
+    height: 200px;
+    border-radius: 8px; /* Rounded corners on the image */
+    margin-bottom: 10px; /* Space between image and text */
+}
+
+.workout_details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Space between text elements */
+}
+
+.workout_name {
+    font-size: 1.5rem; /* Larger font for workout name */
+    font-weight: bold;
+}
+
+.workout_stats,
+.workout_notes {
+    font-size: 1.1rem;
+}
