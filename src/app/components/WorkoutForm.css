@@ -12,7 +12,7 @@
   
   form {
     position: relative; /* Set this to position the close button relative to the form */
-    padding: 20px;
+    padding:40px 20px 20px 20px;
     background-color: white;
     border-radius: 8px;
     width: 400px; /* Adjust the form width as needed */

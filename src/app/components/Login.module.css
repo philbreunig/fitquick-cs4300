@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: center;
   margin: 10px;
+  padding: 20px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .header {
@@ -28,7 +29,6 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   padding: 0px;
   margin: 0px;
-  border-bottom: solid 1px;
   width: 100%;
   text-align: center;
   height: 100px;
