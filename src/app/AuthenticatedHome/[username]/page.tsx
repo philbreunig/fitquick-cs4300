@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <div>
       <Nav username={username as string} url={signout} />
-      <Button />
+      <Button username={username as string} />
       <WorkoutList workouts={INIT_WORKOUT} />
     </div>
   );
