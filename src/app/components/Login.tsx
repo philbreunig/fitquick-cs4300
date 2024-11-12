@@ -19,6 +19,10 @@ export default function Login({ onLogin }: LoginProps) {
       alert("Username and Password are required");
       return;
     }
+    if (username.includes(" ")) {
+      alert("Username cannot include spaces");
+      return;
+    }
     onLogin({ username });
     setUsername("");
     setPassword("");
