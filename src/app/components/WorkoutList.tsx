@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import Workout from "./Workout";
 
 type WorkoutProps = {
   workouts: {
-    id: number;
+    _id: string;
     workoutName: string;
     reps: number;
     sets: number;
@@ -16,7 +15,7 @@ export default function WorkoutList({ workouts }: WorkoutProps) {
   return (
     <div>
       {workouts.map((workout) => (
-        <Workout key={workout.id} workout={workout} />
+        <Workout key={workout._id} workout={workout} />
       ))}
     </div>
   );

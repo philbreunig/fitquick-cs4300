@@ -3,7 +3,7 @@ import WorkoutList from "./WorkoutList";
 
 type WorkoutProps = {
   workouts?: {
-    id: number;
+    _id: string;
     workoutName: string;
     reps: number;
     sets: number;

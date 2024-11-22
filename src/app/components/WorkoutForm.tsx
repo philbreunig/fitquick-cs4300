@@ -3,7 +3,6 @@ import "./WorkoutForm.css";
 
 type WorkoutProps = {
   onAddWorkout: (workout: {
-    id: number;
     workoutName: string;
     reps: number;
     sets: number;
@@ -27,7 +26,6 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
       return;
     }
     const newWorkout = {
-      id: Date.now(),
       workoutName,
       reps,
       sets,

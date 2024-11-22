@@ -4,7 +4,7 @@ import styles from "./Workout.module.css";
 
 type WorkoutProps = {
   workout: {
-    id: number;
+    _id: string;
     workoutName: string;
     reps: number;
     sets: number;
