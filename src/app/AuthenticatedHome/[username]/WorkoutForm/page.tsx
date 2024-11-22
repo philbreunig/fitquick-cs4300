@@ -49,7 +49,8 @@ const INIT_WORKOUT: Workout[] = [
 
 export default function Home() {
   const { username } = useParams();
-  const signout = "/";
+  const signout1 = "/";
+  const signout2 = "/";
   const [workouts, setWorkout] = useState<Workout[]>(INIT_WORKOUT);
 
   const addWorkout = (newWorkout: Workout) => {
@@ -61,7 +62,7 @@ export default function Home() {
   };
   return (
     <div>
-      <Nav username={username as string} url={signout} />
+      <Nav username={username as string} url1={signout1} url2={signout2} />
       <div className={Style.container}>
         <WorkoutList workouts={workouts} />
         <WorkoutForm onAddWorkout={addWorkout} onClose={close} />

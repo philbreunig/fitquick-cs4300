@@ -23,10 +23,32 @@
 .logo {
   height: 100px;
 }
-
+.signUpLink {
+  font-size: 15px;
+  color: #161469;
+  padding: 1px;
+  border: solid;
+  border-radius: 5px;
+  background-color: rgb(165, 184, 197);
+}
 .loginLink {
   font-size: 15px;
-  color: white;
+  color: #161469;
+  margin-left: 1vw;
+  padding: 1px;
+  border: solid;
+  border-radius: 5px;
+  background-color: rgb(165, 184, 197);
+}
+
+.signUpLink:hover {
+  color: rgb(165, 184, 197);
+  background-color: #161469;
+}
+
+.loginLink:hover {
+  color: rgb(165, 184, 197);
+  background-color: #161469;
 }
 .userIcon {
   height: 25px;

@@ -7,7 +7,8 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  const navUrl = "/SignUp";
+  const signUpUrl = "/SignUp";
+  const loginUrl = "/Login";
   const [users, setUsers] = useState<any[]>([]);
   const addNewUser = (newUser: {
     id: number;
@@ -21,7 +22,7 @@ export default function Home() {
   };
   return (
     <div>
-      <Nav username={null} url={navUrl} />
+      <Nav username={null} url1={signUpUrl} url2={loginUrl} />
       <Signup onAddUser={addNewUser} />
     </div>
   );

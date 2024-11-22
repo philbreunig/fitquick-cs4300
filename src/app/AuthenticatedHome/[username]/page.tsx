@@ -47,9 +47,10 @@ const INIT_WORKOUT: Workout[] = [
 export default function Home() {
   const { username } = useParams();
   const signout = "/";
+
   return (
     <div>
-      <Nav username={username as string} url={signout} />
+      <Nav username={username as string} url1={signout} url2={signout} />
       <Button username={username as string} />
       <WorkoutList workouts={INIT_WORKOUT} />
     </div>

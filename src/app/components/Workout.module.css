@@ -1,23 +1,33 @@
 /* Additional styling for images and text within the card */
+.workout_card {
+  border: 1px solid;
+  border-radius: 10px;
+  background: radial-gradient(circle at 10% 0%, black, grey);
+  gap: 25%;
+}
+
 .workout_image {
-    width: 200px; /* Make image take up full width of the card */
-    height: 200px;
-    border-radius: 8px; /* Rounded corners on the image */
-    margin-bottom: 10px; /* Space between image and text */
+  flex-shrink: 0;
+  border-radius: 10px;
+  width: 15vh;
+  height: 15vh;
+  object-fit: cover;
 }
 
 .workout_details {
-    display: flex;
-    flex-direction: column;
-    gap: 8px; /* Space between text elements */
+  display: flex;
+  flex-direction: column;
+  gap: 8%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .workout_name {
-    font-size: 1.5rem; /* Larger font for workout name */
-    font-weight: bold;
+  font-size: 5vh; /* Larger font for workout name */
+  font-weight: 200;
 }
 
 .workout_stats,
 .workout_notes {
-    font-size: 1.1rem;
+  font-size: 3vh;
+  font-weight: 200 !important;
 }

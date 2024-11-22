@@ -8,10 +8,11 @@ export default function Home() {
   const handleLogin = (user: { username: string }) => {
     setUsername(user.username);
   };
-  const create = "/SignUp";
+  const signUpURL = "/SignUp";
+  const loginURL = "/Login";
   return (
     <div>
-      <Nav username={username} url={create} />
+      <Nav username={null} url1={signUpURL} url2={loginURL} />
       <Login onLogin={handleLogin} />
     </div>
   );

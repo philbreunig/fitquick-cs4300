@@ -47,10 +47,11 @@ const INIT_WORKOUT: Workout[] = [
 ];
 
 export default function Home() {
-  const navUrl = "/SignUp";
+  const signUpURL = "/SignUp";
+  const loginURL = "/Login";
   return (
     <div>
-      <Nav username={null} url={navUrl} />
+      <Nav username={null} url1={signUpURL} url2={loginURL} />
       <NonAuthSplash workouts={INIT_WORKOUT} />
     </div>
   );

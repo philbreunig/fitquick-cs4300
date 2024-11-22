@@ -17,6 +17,9 @@ export default function NonAuthSplash({ workouts = [] }: WorkoutProps) {
     <div className={Style.container}>
       <p className={Style.slogan}>Join Today to Get Fit Quick</p>
       <WorkoutList workouts={workouts} />
+      <p className={Style.description}>
+        Create an account or login to customize your own workout plans
+      </p>
     </div>
   );
 }

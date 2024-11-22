@@ -3,10 +3,11 @@ import Link from "next/link";
 
 type NavProps = {
   username?: string | null;
-  url: string;
+  url1: string;
+  url2: string;
 };
 
-export default function Nav({ username, url }: NavProps) {
+export default function Nav({ username, url1, url2 }: NavProps) {
   return (
     <div className={Style.banner}>
       <img
@@ -17,10 +18,22 @@ export default function Nav({ username, url }: NavProps) {
       <Link href="/" className={Style.title}>
         {username ? `Welcome, ${username}!` : "FitQuick"}
       </Link>
+
       <div className={Style.loginGroup}>
-        <Link href={url} className={Style.loginLink}>
-          {url === "/" ? "LogOut" : "Sign-Up/LogIn"}
-        </Link>
+        {url1 === "/" || url2 == "/" ? (
+          <Link href="/" className={Style.signUpLink}>
+            Log-out
+          </Link>
+        ) : (
+          <>
+            <Link href={url1} className={Style.signUpLink}>
+              Sign-up
+            </Link>
+            <Link href={url2} className={Style.loginLink}>
+              Login
+            </Link>
+          </>
+        )}
         <img
           src="/user-icon.png"
           alt="User Logo"
