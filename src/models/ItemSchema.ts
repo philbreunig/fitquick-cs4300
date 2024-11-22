@@ -1,28 +1,20 @@
-// DONT TOUCH THIS 
+import { setServers } from "dns";
 import mongoose, { Schema, Document, Model } from "mongoose";
 
 interface IItem extends Document {
-    title: string;
-    description?: string;
-    image?: string;
-    updated_date: Date;
+    workoutName: string,
+    reps: number,
+    sets: number,
+    imageURL: string,
+    notes: string
 }
 
 const itemSchema = new Schema<IItem>({
-    title: {
-        type: String,
-        required: true,
-    },
-    description: {
-        type: String,
-    },
-    image: {
-        type: String,
-    },
-    updated_date: {
-        type: Date,
-        default: Date.now,
-    },
+    workoutName: { type: String, required: true },
+    reps: { type: Number, required: true },
+    sets: { type: Number, required: true },
+    imageURL: { type: String, required: true },
+    notes: { type: String }
 })
 
 const Item: Model<IItem> = mongoose.models.Item || mongoose.model<IItem>("Item", itemSchema);
