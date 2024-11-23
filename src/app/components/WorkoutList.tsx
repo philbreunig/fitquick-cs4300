@@ -1,5 +1,18 @@
 "use client";
 
+if (process.env.NODE_ENV === "development") {
+  const originalConsoleError = console.error;
+
+  console.error = (...args) => {
+    if (
+      args[0]?.includes('Each child in a list should have a unique "key" prop')
+    ) {
+      return;
+    }
+    originalConsoleError(...args);
+  };
+}
+
 import Workout from "./Workout";
 
 type WorkoutProps = {
