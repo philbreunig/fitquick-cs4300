@@ -15,11 +15,11 @@ type Workout = {
   notes: string;
 };
 
-export default function Home() {
-  const { username } = useParams();
+export default function Home({ params }: { params: { username: string } }) {
   const signout1 = "/";
   const signout2 = "/";
   const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const { username } = useParams();
 
   useEffect(() => {
     const fetchWorkouts = async () => {

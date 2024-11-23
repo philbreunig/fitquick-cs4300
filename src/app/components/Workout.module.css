@@ -1,9 +1,14 @@
 /* Additional styling for images and text within the card */
 .workout_card {
+  display: flex;
   border: 1px solid;
   border-radius: 10px;
   background: radial-gradient(circle at 10% 0%, black, grey);
   gap: 25%;
+}
+
+.workout_card.withButton {
+  width: 130vh;
 }
 
 .workout_image {
@@ -15,6 +20,7 @@
 }
 
 .workout_details {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 8%;

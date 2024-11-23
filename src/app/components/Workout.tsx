@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Card from "./Card";
 import styles from "./Workout.module.css";
@@ -11,11 +12,20 @@ type WorkoutProps = {
     imageURL: string;
     notes: string;
   };
+  onDelete?: (id: string) => void;
 };
 
-export default function Workout({ workout }: WorkoutProps) {
+export default function Workout({ workout, onDelete }: WorkoutProps) {
+  const handleDelete = () => {
+    if (onDelete) onDelete(workout._id);
+  };
+  const showDeleteButton = onDelete && typeof onDelete === "function";
   return (
-    <Card className={styles.workout_card}>
+    <Card
+      className={`${styles.workout_card} ${
+        showDeleteButton ? styles.withButton : ""
+      }`}
+    >
       <img
         src={workout.imageURL}
         alt={workout.workoutName}
@@ -28,6 +38,11 @@ export default function Workout({ workout }: WorkoutProps) {
         </div>
         <div className={styles.workout_notes}>{workout.notes}</div>
       </div>
+      {onDelete && typeof onDelete === "function" && (
+        <button onClick={handleDelete} className={styles.deleteButton}>
+          Delete workout
+        </button>
+      )}
     </Card>
   );
 }

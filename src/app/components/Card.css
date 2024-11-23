@@ -1,6 +1,6 @@
 .card {
   width: 80vh; /* Set the width to 80% of the container */
-  max-width: 800px; /* Optional: Set a maximum width to control size on larger screens */
+  max-width: 200vw; /* Optional: Set a maximum width to control size on larger screens */
   height: 20vh;
   margin: 10px auto; /* Center the card and add vertical spacing */
   padding: 20px; /* Add padding for spacing inside the card */
