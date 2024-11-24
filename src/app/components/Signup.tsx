@@ -32,10 +32,10 @@ export default function Signup({ onAddUser }: SignupProps) {
     }
     const newUser = {
       id: Date.now(),
-      name: "",
-      username: "",
-      email: "",
-      password: "",
+      name: name,
+      username: username,
+      email: email,
+      password: password,
     };
     onAddUser(newUser);
     setName("");
