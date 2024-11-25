@@ -44,5 +44,14 @@
   padding: 4px 4px;
   cursor: pointer;
   border-radius: 12px;
+  width: 120px
 }
 
+.editButton {
+  background-color: #21d817;
+  color: white;
+  padding: 4px 4px;
+  cursor: pointer;
+  border-radius: 12px;
+  width: 120px;
+}

@@ -44,6 +44,9 @@ export default function Workout({ workout, onDelete }: WorkoutProps) {
           Delete workout
         </button>
       )}
+      <button className={styles.editButton}>
+        Edit
+      </button>
       </div>
     </Card>
   );
