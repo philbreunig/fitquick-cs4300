@@ -37,3 +37,12 @@
   font-size: 3vh;
   font-weight: 200 !important;
 }
+
+.deleteButton {
+  background-color: #dc3545;
+  color: white;
+  padding: 4px 4px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+

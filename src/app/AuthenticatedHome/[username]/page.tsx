@@ -52,12 +52,14 @@ export default function Home({ params }: { params: { username: string } }) {
       console.error("Error deleting workout: ", error);
     }
   };
-
+  
   return (
     <div>
       <Nav username={username as string} url1={signout} url2={signout} />
       <Button username={username as string} />
-      <WorkoutList workouts={workouts} onDelete={deleteWorkout} />
+      <WorkoutList workouts={workouts} onDelete={deleteWorkout}/>
     </div>
   );
 }
+
+

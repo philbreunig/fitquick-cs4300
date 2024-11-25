@@ -38,11 +38,13 @@ export default function Workout({ workout, onDelete }: WorkoutProps) {
         </div>
         <div className={styles.workout_notes}>{workout.notes}</div>
       </div>
+      <div>
       {onDelete && typeof onDelete === "function" && (
         <button onClick={handleDelete} className={styles.deleteButton}>
           Delete workout
         </button>
       )}
+      </div>
     </Card>
   );
 }
