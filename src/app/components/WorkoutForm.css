@@ -1,3 +1,13 @@
+body {
+  margin: 0; /* Remove default margin for full coverage */
+  padding: 0;
+  height: 100%;
+  background-color: #9142f9; /* Set your desired background color */
+}
+
+.pageBackground {
+  background-color: #9142f9; /* Replace with your desired color */
+}
 .formContainer {
   top: 0;
   left: 0;
@@ -6,7 +16,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-top: 10px;
 }
 
@@ -15,11 +24,11 @@ form {
   padding: 20px;
 
   border-radius: 8px;
-  width: 400px; /* Adjust the form width as needed */
+  width: 300px; /* Adjust the form width as needed */
   background: radial-gradient(
     circle at 12% 0%,
     #161469,
-    rgb(255, 255, 255),
+    rgba(148, 4, 132, 0.589),
     #161469
   );
 }
