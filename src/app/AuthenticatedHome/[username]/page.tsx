@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./Page.module.css";
 import Nav from "../../components/Nav";
 import WorkoutList from "../../components/WorkoutList";
 import Button from "../../components/Button";
@@ -54,7 +55,7 @@ export default function Home({ params }: { params: { username: string } }) {
   };
   
   return (
-    <div>
+    <div className={styles.container} >
       <Nav username={username as string} url1={signout} url2={signout} />
       <Button username={username as string} />
       <WorkoutList workouts={workouts} onDelete={deleteWorkout}/>
