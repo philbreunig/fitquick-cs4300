@@ -1,3 +1,4 @@
+// Workout.tsx
 "use client";
 import Image from "next/image";
 import Card from "./Card";
@@ -13,19 +14,20 @@ type WorkoutProps = {
     notes: string;
   };
   onDelete?: (id: string) => void;
+  onEdit?: (id: string) => void; // Optional onEdit prop
 };
 
-export default function Workout({ workout, onDelete }: WorkoutProps) {
+export default function Workout({ workout, onDelete, onEdit }: WorkoutProps) {
   const handleDelete = () => {
     if (onDelete) onDelete(workout._id);
   };
-  const showDeleteButton = onDelete && typeof onDelete === "function";
+
+  const handleEdit = () => {
+    if (onEdit) onEdit(workout._id); // Trigger the onEdit function if it exists
+  };
+
   return (
-    <Card
-      className={`${styles.workout_card} ${
-        showDeleteButton ? styles.withButton : ""
-      }`}
-    >
+    <Card className={styles.workout_card}>
       <img
         src={workout.imageURL}
         alt={workout.workoutName}
@@ -38,15 +40,17 @@ export default function Workout({ workout, onDelete }: WorkoutProps) {
         </div>
         <div className={styles.workout_notes}>{workout.notes}</div>
       </div>
-      <div>
-      {onDelete && typeof onDelete === "function" && (
-        <button onClick={handleDelete} className={styles.deleteButton}>
-          Delete workout
-        </button>
-      )}
-      <button className={styles.editButton}>
-        Edit
-      </button>
+      <div className={styles.workout_buttons}>
+        {onDelete && (
+          <button onClick={handleDelete} className={styles.deleteButton}>
+            Delete Workout
+          </button>
+        )}
+        {onEdit && (
+          <button onClick={handleEdit} className={styles.editButton}>
+            Edit Workout
+          </button>
+        )}
       </div>
     </Card>
   );

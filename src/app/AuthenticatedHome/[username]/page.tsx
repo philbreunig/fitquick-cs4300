@@ -1,3 +1,4 @@
+// Home.tsx (Authorized User Version)
 "use client";
 
 import styles from "./Page.module.css";
@@ -53,14 +54,17 @@ export default function Home({ params }: { params: { username: string } }) {
       console.error("Error deleting workout: ", error);
     }
   };
-  
+
+  // Function to handle the Edit action (for demonstration purposes, just log)
+  const handleEdit = (id: string) => {
+    console.log("Editing workout with id:", id);
+  };
+
   return (
-    <div className={styles.container} >
+    <div className={styles.container}>
       <Nav username={username as string} url1={signout} url2={signout} />
       <Button username={username as string} />
-      <WorkoutList workouts={workouts} onDelete={deleteWorkout}/>
+      <WorkoutList workouts={workouts} onDelete={deleteWorkout} onEdit={handleEdit} />
     </div>
   );
 }
-
-

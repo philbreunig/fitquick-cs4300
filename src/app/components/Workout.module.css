@@ -1,52 +1,60 @@
-/* Additional styling for images and text within the card */
+/* The main workout card */
 .workout_card {
   display: flex;
   border: 1px solid;
   border-radius: 10px;
   background: radial-gradient(circle at 10% 0%, black, grey);
-  gap: 25%;
+  gap: 10%; /* Reduced gap between the image and details */
+  width: auto; /* Remove fixed width, let it grow naturally */
+  max-width: 60%; /* Ensure it doesn’t exceed available width */
 }
 
+/* Adjustments for workout card when it has buttons */
 .workout_card.withButton {
-  width: 130vh;
+  width: 100%; /* Adjust to full width or a specific value like '400px' */
 }
 
+/* Image styling */
 .workout_image {
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevent shrinking of image */
   border-radius: 10px;
-  width: 15vh;
-  height: 15vh;
-  object-fit: cover;
+  width: 15vh; /* Keep a consistent size for the image */
+  height: 15vh; 
+  object-fit: cover; /* Ensure the image covers the area without distortion */
 }
 
+/* Workout details area styling */
 .workout_details {
-  flex-grow: 1;
+  flex-grow: 1; /* Allow workout details to take up available space */
   display: flex;
   flex-direction: column;
-  gap: 8%;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  gap: 8%; /* Spacing between workout name, stats, and notes */
 }
 
+/* Workout name styling */
 .workout_name {
   font-size: 5vh; /* Larger font for workout name */
   font-weight: 200;
 }
 
+/* Workout stats (sets, reps) and notes styling */
 .workout_stats,
 .workout_notes {
   font-size: 3vh;
   font-weight: 200 !important;
 }
 
+/* Delete button styling */
 .deleteButton {
   background-color: #dc3545;
   color: white;
   padding: 4px 4px;
   cursor: pointer;
   border-radius: 12px;
-  width: 120px
+  width: 120px;
 }
 
+/* Edit button styling */
 .editButton {
   background-color: #21d817;
   color: white;
