@@ -7,6 +7,8 @@ import WorkoutList from "../../components/WorkoutList";
 import Button from "../../components/Button";
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { useContext } from "react";
+import { AuthContext } from "../../context/user";
 
 interface Item {
   _id: string;
@@ -23,6 +25,11 @@ interface HomeProps {
 }
 
 export default function Home({ params }: { params: { username: string } }) {
+  const context = useContext(AuthContext);
+
+  if (!context) throw new Error("AuthContext null.");
+  const { isLoggedIn, logout } = context;
+
   const signout = "/";
   const [workouts, setWorkouts] = useState<Item[]>([]);
   const { username } = useParams();
@@ -60,11 +67,24 @@ export default function Home({ params }: { params: { username: string } }) {
     console.log("Editing workout with id:", id);
   };
 
+  const handleSignOut = () => {
+    logout();
+  };
+
   return (
     <div className={styles.container}>
-      <Nav username={username as string} url1={signout} url2={signout} />
+      <Nav
+        username={username as string}
+        url1={signout}
+        url2={signout}
+        handleLogout={handleSignOut}
+      />
       <Button username={username as string} />
-      <WorkoutList workouts={workouts} onDelete={deleteWorkout} onEdit={handleEdit} />
+      <WorkoutList
+        workouts={workouts}
+        onDelete={deleteWorkout}
+        onEdit={handleEdit}
+      />
     </div>
   );
 }
