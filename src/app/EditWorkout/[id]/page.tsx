@@ -25,9 +25,11 @@ export default function EditWorkoutPage() {
   const Router = useRouter();
   const { workoutId } = useParams(); // Get workoutId from URL params
 
-  useEffect(() => {
-    if (!workoutId) return;
+  console.log(workoutId);
 
+  useEffect(() => {
+    console.log(workoutId);
+    if (!workoutId) return;
     const fetchWorkout = async () => {
       setLoading(true);
       try {
@@ -36,6 +38,7 @@ export default function EditWorkoutPage() {
         );
         const data = await response.json();
         setWorkout(data); // Set single workout instead of an array
+        console.log(data);
       } catch (error) {
         console.error("Failed to fetch workout: ", error);
       } finally {
@@ -74,15 +77,21 @@ export default function EditWorkoutPage() {
     Router.push("/home"); // Redirect back to home or any other page
   };
 
+  // While the workout is loading, show a loading message
+  if (loading) {
+    return <div>Loading workout...</div>;
+  }
+
+  // Render the EditWorkoutForm only if the workout is available
   return (
     <div>
-      {
+      {workout && (
         <EditWorkoutForm
           originalWorkout={workout} // Pass the single workout object
           onSaveEdits={handleUpdateWorkout}
           onClose={handleClose}
         />
-      }
+      )}
     </div>
   );
 }
