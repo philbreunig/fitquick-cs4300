@@ -30,10 +30,7 @@ export default function Home() {
   const signout = "/";
 
   useEffect(() => {
-    console.log(username);
-    const loginStatus = async () => {
-      console.log(isLoggedIn);
-    };
+    const loginStatus = async () => {};
     loginStatus();
   }, []);
 

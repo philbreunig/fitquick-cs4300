@@ -42,13 +42,13 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
       notes: notes || "",
     };
     onAddWorkout(newWorkout);
-
     setWorkoutName("");
     setReps(0);
     setSets(0);
     setImageURL("");
     setNotes("");
     setUserID("");
+    window.location.reload();
   };
 
   return (
