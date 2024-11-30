@@ -3,6 +3,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+type Workout = {
+  id: string;
+  workoutName: string;
+  reps: number;
+  sets: number;
+  imageURL: string;
+  notes: string;
+};
+
 type SignupProps = {
   onAddUser: (user: {
     id: number;
@@ -10,6 +19,7 @@ type SignupProps = {
     username: string;
     email: string;
     password: string;
+    workouts: Workout[];
   }) => void;
 };
 
@@ -36,6 +46,7 @@ export default function Signup({ onAddUser }: SignupProps) {
       username: username,
       email: email,
       password: password,
+      workouts: [],
     };
     onAddUser(newUser);
     setName("");

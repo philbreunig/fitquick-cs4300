@@ -5,9 +5,10 @@ type NavProps = {
   username?: string | null;
   url1: string;
   url2: string;
+  handleLogout?: () => void;
 };
 
-export default function Nav({ username, url1, url2 }: NavProps) {
+export default function Nav({ username, url1, url2, handleLogout }: NavProps) {
   return (
     <div className={Style.banner}>
       <img
@@ -22,7 +23,15 @@ export default function Nav({ username, url1, url2 }: NavProps) {
       <div className={Style.loginGroup}>
         {url1 === "/" || url2 == "/" ? (
           <Link href="/" className={Style.signUpLink}>
-            Log-out
+            <button
+              className={Style.signUpLink}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLogout?.();
+              }}
+            >
+              Log-out
+            </button>
           </Link>
         ) : (
           <>

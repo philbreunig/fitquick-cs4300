@@ -3,30 +3,43 @@ import Style from "./Login.module.css";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { AuthContext } from "../context/user";
 
 type LoginProps = {
   onLogin: (user: { username: string }) => void;
 };
 
 export default function Login({ onLogin }: LoginProps) {
-  const [username, setUsername] = useState("");
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("AuthContext null");
+  }
+  const { isLoggedIn, login } = context;
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!username || !password) {
-      alert("Username and Password are required");
-      return;
+    try {
+      if (!email || !password) {
+        alert("Email and Password are required");
+        return;
+      }
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      await login(email, password);
+      router.push(`/`);
+    } catch (err) {
+      setEmail("");
+      setPassword("");
     }
-    if (username.includes(" ")) {
-      alert("Username cannot include spaces");
-      return;
-    }
-    onLogin({ username });
-    setUsername("");
-    setPassword("");
-    router.push(`/AuthenticatedHome/${username}`);
   };
   return (
     <div className={Style.background}>
@@ -41,9 +54,9 @@ export default function Login({ onLogin }: LoginProps) {
             <input
               type="text"
               placeholder="Username"
-              value={username}
+              value={email}
               className={Style.inputField}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
           <div className={Style.input}>
