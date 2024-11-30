@@ -1,88 +1,96 @@
 import { useState, useContext, useEffect, use } from "react";
-import "./WorkoutForm.css"
-import { AuthContext } from "../context/user"
+import "./WorkoutForm.css";
+import { AuthContext } from "../context/user";
 
 type EditWorkoutProps = {
-    originalWorkout: {
-        _id: string;
-        userID: string;
-        workoutName: string;
-        reps: number;
-        sets: number;
-        imageURL: string;
-        notes: string;
-    };
-    onSaveEdits: (editedWorkout: {
-        _id: string;
-        workoutName: string;
-        reps: number;
-        sets: number;
-        imageURL: string;
-        notes: string;
-    }) => void;
-    onClose: () => void;
+  originalWorkout: {
+    _id: string;
+    userID: string;
+    workoutName: string;
+    reps: number;
+    sets: number;
+    imageURL: string;
+    notes: string;
+  };
+  onSaveEdits: (editedWorkout: {
+    _id: string;
+    userID: string;
+    workoutName: string;
+    reps: number;
+    sets: number;
+    imageURL: string;
+    notes: string;
+  }) => void;
+  onClose: () => void;
 };
 
-export default function EditWorkoutForm({ originalWorkout, onSaveEdits, onClose }: EditWorkoutProps) {
-    const context = useContext(AuthContext)
-    if (!context) throw new Error("AuthContext null");
+export default function EditWorkoutForm({
+  originalWorkout,
+  onSaveEdits,
+  onClose,
+}: EditWorkoutProps) {
+  const context = useContext(AuthContext);
+  if (!context) throw new Error("AuthContext null");
+  const { id } = context;
 
-    const [workoutData, setWorkoutData] = useState(originalWorkout);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+  const [workoutData, setWorkoutData] = useState(originalWorkout);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-    useEffect(() => {
-        if (!originalWorkout) return;
-         
-        if (!workoutData || !workoutData._id) {
-            setLoading(true);
+  useEffect(() => {
+    if (!originalWorkout) return;
 
-            const fetchWorkout = async (id: string) => {
-                try {
-                    const response = await fetch(`/api/workouts/${id}`);
-                    if(!response.ok) {
-                        throw new Error("Failed to fetch workout data");
-                    }
-                    const data = await response.json();
-                    setWorkoutData(data);
-                } catch (err) {
-                    setError("Error fetching workout data");
-                } finally {
-                    setLoading(false);
-                }
-            };
-            fetchWorkout(originalWorkout._id);
+    if (!workoutData || !workoutData._id) {
+      setLoading(true);
+
+      const fetchWorkout = async (id: string) => {
+        try {
+          const response = await fetch(`/api/workouts/${id}`);
+          if (!response.ok) {
+            throw new Error("Failed to fetch workout data");
+          }
+          const data = await response.json();
+          setWorkoutData(data);
+        } catch (err) {
+          setError("Error fetching workout data");
+        } finally {
+          setLoading(false);
         }
-    }, [originalWorkout])
+      };
+      fetchWorkout(originalWorkout._id);
+    }
+  }, [originalWorkout]);
 
-    const { workoutName, reps, sets, imageURL, notes, _id} = originalWorkout;
-    const [newWorkoutName, setNewWorkoutName] = useState(workoutName);
-    const [newReps, setNewReps] = useState(reps);
-    const [newSets, setNewSets] = useState(sets);
-    const [newImageURL, setNewImageURL] = useState(imageURL);
-    const [newNotes, setNewNotes] = useState(notes);
+  const { workoutName, reps, sets, imageURL, notes, _id } = originalWorkout;
+  const [newWorkoutName, setNewWorkoutName] = useState(workoutName);
+  const [newReps, setNewReps] = useState(reps);
+  const [newSets, setNewSets] = useState(sets);
+  const [newImageURL, setNewImageURL] = useState(imageURL);
+  const [newNotes, setNewNotes] = useState(notes);
+  const [userID, setUserID] = useState(id);
 
-    const handleSubmit = (e: React.FormEvent) => {
-       e.preventDefault();
-       if (!newWorkoutName || !newReps || !newSets) {
-        alert("Workout Name/Reps/Sets are required!")
-        return;
-       }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newWorkoutName || !newReps || !newSets) {
+      alert("Workout Name/Reps/Sets are required!");
+      return;
+    }
 
     const newWorkout = {
-        _id,
-        workoutName: newWorkoutName,
-        reps: newReps,
-        sets: newSets,
-        imageURL: newImageURL,
-        notes: newNotes,
+      _id,
+      userID,
+      workoutName: newWorkoutName,
+      reps: newReps,
+      sets: newSets,
+      imageURL: newImageURL,
+      notes: newNotes,
     };
 
     onSaveEdits(newWorkout);
     onClose();
-};
+  };
 
-return (
+  return (
     <div className="pageBackground">
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
@@ -134,4 +142,3 @@ return (
     </div>
   );
 }
-
