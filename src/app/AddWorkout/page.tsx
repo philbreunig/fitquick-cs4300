@@ -76,7 +76,7 @@ export default function Home({ params }: { params: { username: string } }) {
       if (!response.ok) {
         throw new Error("Failed to add workout");
       }
-
+      /* TRYING TO ADD TO USER ARRAY ON SUBMIT
       const savedWorkout = await response.json();
 
       const addToUserResponse = await fetch(
@@ -98,7 +98,7 @@ export default function Home({ params }: { params: { username: string } }) {
 
       const data = await addToUserResponse.json();
       setWorkouts([...workouts, savedWorkout]);
-      router.push("/");
+      router.push("/"); */
     } catch (err) {
       console.error("Error adding workout to user:", err);
     }

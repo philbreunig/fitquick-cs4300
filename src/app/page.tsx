@@ -92,7 +92,6 @@ export default function Home() {
     logout();
   };
 
-  console.log(workouts);
   return (
     <div>
       {!isLoggedIn && (
