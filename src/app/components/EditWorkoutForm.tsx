@@ -42,22 +42,6 @@ export default function EditWorkoutForm({
 
     if (!workoutData || !workoutData._id) {
       setLoading(true);
-
-      const fetchWorkout = async (id: string) => {
-        try {
-          const response = await fetch(`/api/workouts/${id}`);
-          if (!response.ok) {
-            throw new Error("Failed to fetch workout data");
-          }
-          const data = await response.json();
-          setWorkoutData(data);
-        } catch (err) {
-          setError("Error fetching workout data");
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchWorkout(originalWorkout._id);
     }
   }, [originalWorkout]);
 

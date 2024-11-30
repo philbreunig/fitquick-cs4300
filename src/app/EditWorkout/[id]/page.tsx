@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useContext } from "react";
-import { useRouter, useParams } from "next/navigation"; // Use from next/navigation for app directory
+import { useRouter, useParams, useSearchParams } from "next/navigation"; // Use from next/navigation for app directory
 import EditWorkoutForm from "../../components/EditWorkoutForm";
 import { AuthContext } from "../../context/user";
 
@@ -18,27 +18,21 @@ interface Item {
 export default function EditWorkoutPage() {
   const context = useContext(AuthContext);
   if (!context) throw new Error("Context null.");
-  const { isLoggedIn, id, logout, username } = context;
+  const { isLoggedIn, logout, username } = context;
 
   const [workout, setWorkout] = useState<Item | null>(null); // Changed to single workout object
   const [loading, setLoading] = useState(true);
   const Router = useRouter();
-  const { workoutId } = useParams(); // Get workoutId from URL params
-
-  console.log(workoutId);
+  const { id } = useParams();
 
   useEffect(() => {
-    console.log(workoutId);
-    if (!workoutId) return;
+    if (!id) return;
     const fetchWorkout = async () => {
       setLoading(true);
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/items/${workoutId}`
-        );
+        const response = await fetch(`http://localhost:3000/api/items/${id}`);
         const data = await response.json();
         setWorkout(data); // Set single workout instead of an array
-        console.log(data);
       } catch (error) {
         console.error("Failed to fetch workout: ", error);
       } finally {
@@ -47,7 +41,7 @@ export default function EditWorkoutPage() {
     };
 
     fetchWorkout();
-  }, [workoutId]);
+  }, [id]);
 
   // Handle workout update (PUT request)
   const handleUpdateWorkout = async (editedWorkout: Omit<Item, "_id">) => {
