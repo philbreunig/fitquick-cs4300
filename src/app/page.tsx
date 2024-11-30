@@ -7,6 +7,36 @@ import Button from "./components/Button";
 import WorkoutList from "./components/WorkoutList";
 import styles from "./Page.module.css";
 
+const defWorkouts = [
+  {
+    _id: "0",
+    userID: "",
+    workoutName: "Bench Press",
+    reps: 5,
+    sets: 4,
+    imageURL: "",
+    notes: "Let's hit 225, baby!",
+  },
+  {
+    _id: "1",
+    userID: "",
+    workoutName: "Squat",
+    reps: 6,
+    sets: 4,
+    imageURL: "",
+    notes: "Tree trunk legs otw >:)",
+  },
+  {
+    _id: "2",
+    userID: "",
+    workoutName: "Deadlift",
+    reps: 5,
+    sets: 4,
+    imageURL: "",
+    notes: "Pull! *Pulls*",
+  },
+];
+
 interface Item {
   _id: string;
   userID: string;
@@ -94,7 +124,7 @@ export default function Home() {
       {!isLoggedIn && (
         <div>
           <Nav username={null} url1={signUpURL} url2={loginURL} />
-          <NonAuthSplash workouts={workouts} />
+          <NonAuthSplash workouts={defWorkouts} />
         </div>
       )}
 
@@ -110,11 +140,7 @@ export default function Home() {
           {loading ? (
             <p>Loading workouts...</p>
           ) : (
-            <WorkoutList
-              workouts={workouts}
-              onDelete={deleteWorkout}
-              onEdit={handleEdit}
-            />
+            <WorkoutList workouts={workouts} onDelete={deleteWorkout} />
           )}
         </div>
       )}

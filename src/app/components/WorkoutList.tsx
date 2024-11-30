@@ -17,6 +17,7 @@ if (process.env.NODE_ENV === "development") {
 import { useContext } from "react";
 import Workout from "./Workout";
 import { AuthContext } from "../context/user";
+import { useRouter } from "next/navigation";
 
 type WorkoutProps = {
   workouts: {
@@ -29,17 +30,18 @@ type WorkoutProps = {
     notes: string;
   }[];
   onDelete?: (id: string) => void;
-  onEdit?: (id: string) => void; // Optional onEdit prop
 };
 
-export default function WorkoutList({
-  workouts,
-  onDelete,
-  onEdit,
-}: WorkoutProps) {
+export default function WorkoutList({ workouts, onDelete }: WorkoutProps) {
   const context = useContext(AuthContext);
   if (!context) throw new Error("Context null");
   const { id, isLoggedIn } = context;
+  const router = useRouter();
+
+  const handleEdit = (workoutId: string) => {
+    router.push(`/EditWorkout/${workoutId}`);
+  };
+
   return (
     <div>
       {workouts
@@ -51,7 +53,7 @@ export default function WorkoutList({
             key={workout._id}
             workout={workout}
             onDelete={onDelete}
-            onEdit={onEdit}
+            onEdit={() => handleEdit(workout._id)}
           />
         ))}
     </div>

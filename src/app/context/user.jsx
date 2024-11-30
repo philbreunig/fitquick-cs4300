@@ -26,10 +26,11 @@ const AuthProvider = ({ children }) => {
         }
       }
     } catch (error) {
-      // Silently discard errors related to `localStorage` during server-side rendering
       console.error("Error accessing localStorage:", error);
     }
   }, []);
+
+  
 
   const login = async (email, password) => {
     try {
