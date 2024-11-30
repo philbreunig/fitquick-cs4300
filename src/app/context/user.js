@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [id, setId] = useState(null);
     const router = useRouter();
+    const [username, setUsername] = useState(null);
 
     useEffect(() => {
         const storedUserId = localStorage.getItem("userID");
@@ -35,8 +36,10 @@ const AuthProvider = ({ children }) => {
             }
             const data = await response.json();
             setId(data.user.id);
+            console.log(data.user.id);
             localStorage.setItem("userID", data.user._id);
             setIsLoggedIn(true);
+            setUsername(data.user.username);
         } catch (error) {
             console.log("Login failed.");
             alert("Username or password incorrect.");
@@ -48,11 +51,12 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem("userID");
         setIsLoggedIn(false);
         setId(null);
+        setUsername(null);
         router.push("/");
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, id, login, logout}}>
+        <AuthContext.Provider value={{ isLoggedIn, id, login, logout, username }}>
             {children}
         </AuthContext.Provider>
     );

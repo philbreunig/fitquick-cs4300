@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./WorkoutForm.css";
+import { AuthContext } from "../context/user";
 
 type WorkoutProps = {
   onAddWorkout: (workout: {
+    userID: string;
     workoutName: string;
     reps: number;
     sets: number;
@@ -13,11 +15,16 @@ type WorkoutProps = {
 };
 
 export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
+  const context = useContext(AuthContext);
+  if (!context) throw new Error("AuthContext null");
+  const { id } = context;
+
   const [workoutName, setWorkoutName] = useState("");
   const [reps, setReps] = useState<number>(0);
   const [sets, setSets] = useState<number>(0);
   const [imageURL, setImageURL] = useState("");
   const [notes, setNotes] = useState("");
+  const [userID, setUserID] = useState(id);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +32,9 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
       alert("Name, Reps, and Sets Required");
       return;
     }
+
     const newWorkout = {
+      userID,
       workoutName,
       reps,
       sets,
@@ -33,11 +42,13 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
       notes: notes || "",
     };
     onAddWorkout(newWorkout);
+
     setWorkoutName("");
     setReps(0);
     setSets(0);
     setImageURL("");
     setNotes("");
+    setUserID("");
   };
 
   return (

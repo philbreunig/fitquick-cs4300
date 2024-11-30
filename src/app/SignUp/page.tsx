@@ -8,12 +8,22 @@ import Link from "next/link";
 import { AuthContext } from "../context/user";
 import { useRouter } from "next/navigation";
 
+interface Workout {
+  id: string;
+  workoutName: string;
+  reps: number;
+  sets: number;
+  imageURL: string;
+  notes: string;
+}
+
 type User = {
   _id: number;
   name: string;
   username: string;
   email: string;
   password: string;
+  workouts: Workout[];
 };
 
 export default function Home() {
@@ -48,7 +58,7 @@ export default function Home() {
       });
       if (response.ok) {
         const savedUsers = await response.json();
-        setUsers([...users, { ...newUser, _id: savedUsers._id }]);
+        setUsers([...users, { ...newUser, _id: savedUsers.user._id }]);
       } else {
         console.error("Failed to add user");
       }

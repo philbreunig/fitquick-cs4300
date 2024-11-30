@@ -35,7 +35,7 @@ export default function Login({ onLogin }: LoginProps) {
       }
 
       await login(email, password);
-      router.push(`/AuthenticatedHome/${email}`);
+      router.push(`/`);
     } catch (err) {
       setEmail("");
       setPassword("");

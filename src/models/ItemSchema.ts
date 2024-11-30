@@ -2,6 +2,7 @@ import { setServers } from "dns";
 import mongoose, { Schema, Document, Model } from "mongoose";
 
 interface IItem extends Document {
+    userID:string;
     workoutName: string,
     reps: number,
     sets: number,
@@ -10,6 +11,7 @@ interface IItem extends Document {
 }
 
 const itemSchema = new Schema<IItem>({
+    userID: { type: String, required: true },
     workoutName: { type: String, required: true },
     reps: { type: Number, required: true },
     sets: { type: Number, required: true },

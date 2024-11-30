@@ -5,10 +5,10 @@ import { NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
 
 export async function POST(request: NextRequest) {
-  const { name, username, email, password } = await request.json();
+  const { name, username, email, password, workouts } = await request.json();
   await connectMongoDB();
   const hashedPassword = await bcrypt.hash(password, 5);
-  await User.create({ name, username, email, password: hashedPassword });
+  await User.create({ name, username, email, password: hashedPassword, workouts });
   return NextResponse.json(
     { message: "User added successfully" },
     { status: 201 }

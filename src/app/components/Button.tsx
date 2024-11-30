@@ -12,7 +12,7 @@ type ButtonProps = {
 export default function WorkoutApp({ username }: ButtonProps) {
   const router = useRouter();
   const handleClick = () => {
-    router.push(`/AuthenticatedHome/${username}/WorkoutForm`);
+    router.push(`/AddWorkout`);
   };
   return (
     <div className="button_container">
