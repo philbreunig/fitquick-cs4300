@@ -3,10 +3,11 @@
   display: flex;
   border: 1px solid;
   border-radius: 10px;
+
   background: radial-gradient(circle at 10% 0%, black, grey);
-  gap: 10%; /* Reduced gap between the image and details */
-  width: auto; /* Remove fixed width, let it grow naturally */
-  max-width: 60%; /* Ensure it doesn’t exceed available width */
+  gap: 10vh; /* Reduced gap between the image and details */
+  width: 70vh; /* Remove fixed width, let it grow naturally */
+  max-width: 150vh; /* Ensure it doesn’t exceed available width */
 }
 
 /* Adjustments for workout card when it has buttons */
@@ -19,7 +20,7 @@
   flex-shrink: 0; /* Prevent shrinking of image */
   border-radius: 10px;
   width: 15vh; /* Keep a consistent size for the image */
-  height: 15vh; 
+  height: 15vh;
   object-fit: cover; /* Ensure the image covers the area without distortion */
 }
 

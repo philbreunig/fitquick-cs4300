@@ -25,9 +25,14 @@ export default function Workout({ workout, onDelete, onEdit }: WorkoutProps) {
   const handleEdit = () => {
     if (onEdit) onEdit(workout._id); // Trigger the onEdit function if it exists
   };
+  const showDeleteButton = onDelete && typeof onDelete === "function";
 
   return (
-    <Card className={styles.workout_card}>
+    <Card
+      className={`${styles.workout_card} ${
+        showDeleteButton ? styles.withButton : ""
+      }`}
+    >
       <img
         src={workout.imageURL}
         alt={workout.workoutName}

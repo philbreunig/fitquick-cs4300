@@ -112,7 +112,9 @@ export default function Signup({ onAddUser }: SignupProps) {
             <button className={Style.submitButton} type="submit">
               Submit
             </button>
-            <Link href="./Login">Have an account? Login.</Link>
+            <Link className={Style.link} href="./Login">
+              Have an account? Login.
+            </Link>
           </div>
         </form>
       </div>
