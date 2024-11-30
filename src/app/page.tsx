@@ -24,19 +24,23 @@ export default function Home() {
 
   const [workouts, setWorkouts] = useState<Item[]>([]);
   const [myWorkouts, setMyWorkouts] = useState<Item[]>([]);
+  const [loading, setLoading] = useState(true);
   const signUpURL = "/SignUp";
   const loginURL = "/Login";
   const signout = "/";
 
   useEffect(() => {
+    console.log(username);
     const loginStatus = async () => {
       console.log(isLoggedIn);
     };
     loginStatus();
   }, []);
 
+  /* Only for if user array is working
   useEffect(() => {
     const fetchMyWorkouts = async () => {
+      setLoading(true);
       try {
         const response = await fetch(`http://localhost:3000/api/users/${id}`);
         const data = await response.json();
@@ -46,19 +50,23 @@ export default function Home() {
       }
     };
   });
+  */
 
   useEffect(() => {
     const fetchWorkouts = async () => {
+      setLoading(true);
       try {
         const response = await fetch("http://localhost:3000/api/items");
         const data = await response.json();
         setWorkouts(data.items || []);
       } catch (error) {
         console.error("Failed to fetch workouts: ", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchWorkouts();
-  }, []);
+  }, [isLoggedIn, id]);
 
   const deleteWorkout = async (id: string) => {
     try {
@@ -84,7 +92,6 @@ export default function Home() {
     logout();
   };
 
-  console.log(workouts);
   return (
     <div>
       {!isLoggedIn && (
@@ -103,11 +110,15 @@ export default function Home() {
             handleLogout={handleSignOut}
           />
           <Button username={username as string} />
-          <WorkoutList
-            workouts={workouts}
-            onDelete={deleteWorkout}
-            onEdit={handleEdit}
-          />
+          {loading ? (
+            <p>Loading workouts...</p>
+          ) : (
+            <WorkoutList
+              workouts={workouts}
+              onDelete={deleteWorkout}
+              onEdit={handleEdit}
+            />
+          )}
         </div>
       )}
     </div>

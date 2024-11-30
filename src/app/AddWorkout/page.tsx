@@ -17,16 +17,16 @@ type Workout = {
   notes: string;
 };
 
-export default function Home({ params }: { params: { username: string } }) {
+export default function Home() {
   const context = useContext(AuthContext);
   if (!context) throw new Error("AuthContext null");
-  const { isLoggedIn, id, logout } = context;
+  const { isLoggedIn, id, logout, username } = context;
 
   const signout1 = "/";
   const signout2 = "/";
   const [workouts, setWorkouts] = useState<Workout[]>([]);
-  const { username } = useParams();
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -36,15 +36,19 @@ export default function Home({ params }: { params: { username: string } }) {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3000/api/items`);
+        const response = await fetch("http://localhost:3000/api/items");
         const data = await response.json();
         setWorkouts(data.items || []);
       } catch (error) {
         console.error("Failed to fetch workouts: ", error);
+      } finally {
+        setLoading(false);
       }
     };
-  });
+    fetchWorkouts();
+  }, [isLoggedIn, id]);
 
   /* FIX IF YOU CAN GET WORKOUT TO BE ADDED TO USER ARRAY
 
@@ -76,7 +80,7 @@ export default function Home({ params }: { params: { username: string } }) {
       if (!response.ok) {
         throw new Error("Failed to add workout");
       }
-
+      /* TRYING TO ADD TO USER ARRAY ON SUBMIT
       const savedWorkout = await response.json();
 
       const addToUserResponse = await fetch(
@@ -98,7 +102,7 @@ export default function Home({ params }: { params: { username: string } }) {
 
       const data = await addToUserResponse.json();
       setWorkouts([...workouts, savedWorkout]);
-      router.push("/");
+      router.push("/"); */
     } catch (err) {
       console.error("Error adding workout to user:", err);
     }
@@ -120,7 +124,11 @@ export default function Home({ params }: { params: { username: string } }) {
         handleLogout={handleSignOut}
       />
       <div className={Style.container}>
-        <WorkoutList workouts={workouts} />
+        {loading ? (
+          <p>Loading workouts...</p>
+        ) : (
+          <WorkoutList workouts={workouts} />
+        )}
         <WorkoutForm onAddWorkout={addWorkout} onClose={close} />
       </div>
     </div>

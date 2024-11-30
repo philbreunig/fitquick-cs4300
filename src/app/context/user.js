@@ -13,9 +13,11 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const storedUserId = localStorage.getItem("userID");
+        const storedUsername = localStorage.getItem("username");
         if (storedUserId) {
             setId(storedUserId);
             setIsLoggedIn(true);
+            setUsername(storedUsername);
         }
     }, []);
 
@@ -36,10 +38,9 @@ const AuthProvider = ({ children }) => {
             }
             const data = await response.json();
             setId(data.user.id);
-            console.log(data.user.id);
             localStorage.setItem("userID", data.user._id);
             setIsLoggedIn(true);
-            setUsername(data.user.username);
+            localStorage.setItem("username", data.user.username);
         } catch (error) {
             console.log("Login failed.");
             alert("Username or password incorrect.");
@@ -51,7 +52,7 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem("userID");
         setIsLoggedIn(false);
         setId(null);
-        setUsername(null);
+        localStorage.removeItem("username");
         router.push("/");
     };
 

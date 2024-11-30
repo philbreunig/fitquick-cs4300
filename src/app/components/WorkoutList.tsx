@@ -40,9 +40,6 @@ export default function WorkoutList({
   const context = useContext(AuthContext);
   if (!context) throw new Error("Context null");
   const { id, isLoggedIn } = context;
-  console.log(workouts);
-  console.log(isLoggedIn);
-  console.log(id);
   return (
     <div>
       {workouts
