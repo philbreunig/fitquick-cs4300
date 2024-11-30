@@ -53,7 +53,7 @@ export default function Login({ onLogin }: LoginProps) {
             <img src="user-icon.png" alt="User Icon" className={Style.icon} />
             <input
               type="text"
-              placeholder="Username"
+              placeholder="Email"
               value={email}
               className={Style.inputField}
               onChange={(e) => setEmail(e.target.value)}
