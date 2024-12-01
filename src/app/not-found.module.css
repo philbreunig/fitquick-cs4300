@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5vh;
+  margin-top: 5vh;
+  border: solid;
+  margin: 5vh;
+  padding: 2vh;
+  border-radius: 20px;
+}
+.title {
+  font-size: 10vh;
+  text-decoration: underline;
+}
+
+.errorMessage {
+  font-size: 3vh;
+}
+
+.routingMessage {
+}

@@ -59,6 +59,7 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
             X
           </button>
           <div>
+            <p className="formLabel">WorkoutName</p>
             <input
               type="text"
               placeholder="Workout Name"
@@ -67,6 +68,7 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
             />
           </div>
           <div>
+            <p className="formLabel">Reps</p>
             <input
               type="number"
               placeholder="Reps"
@@ -75,6 +77,7 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
             />
           </div>
           <div>
+            <p className="formLabel">Sets</p>
             <input
               type="number"
               placeholder="Sets"
@@ -83,6 +86,7 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
             />
           </div>
           <div>
+            <p className="formLabel">Reference Image</p>
             <input
               type="text"
               placeholder="Image URL"
@@ -91,6 +95,7 @@ export default function AddWorkout({ onAddWorkout, onClose }: WorkoutProps) {
             />
           </div>
           <div>
+            <p className="formLabel">Notes</p>
             <textarea
               placeholder="Notes"
               value={notes}

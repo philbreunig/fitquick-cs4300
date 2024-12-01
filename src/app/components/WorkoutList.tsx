@@ -52,7 +52,7 @@ export default function WorkoutList({ workouts, onDelete }: WorkoutProps) {
           <Workout
             key={workout._id}
             workout={workout}
-            onDelete={onDelete}
+            onDelete={isLoggedIn ? () => onDelete : undefined}
             onEdit={isLoggedIn ? () => handleEdit(workout._id) : undefined}
           />
         ))}

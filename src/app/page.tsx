@@ -57,7 +57,8 @@ export default function Home() {
 
   const [workouts, setWorkouts] = useState<Item[]>([]);
   const [myWorkouts, setMyWorkouts] = useState<Item[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const signUpURL = "/SignUp";
   const loginURL = "/Login";
   const signout = "/";
@@ -67,35 +68,22 @@ export default function Home() {
     loginStatus();
   }, []);
 
-  /* Only for if user array is working
   useEffect(() => {
-    const fetchMyWorkouts = async () => {
+    if (isLoggedIn && id) {
       setLoading(true);
-      try {
-        const response = await fetch(`http://localhost:3000/api/users/${id}`);
-        const data = await response.json();
-        setMyWorkouts(data.workouts || []);
-      } catch (error) {
-        console.error("Failed to fetch my workouts: ", error);
-      }
-    };
-  });
-  */
-
-  useEffect(() => {
-    const fetchWorkouts = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch("http://localhost:3000/api/items");
-        const data = await response.json();
-        setWorkouts(data.items || []);
-      } catch (error) {
-        console.error("Failed to fetch workouts: ", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchWorkouts();
+      const fetchWorkouts = async () => {
+        try {
+          const response = await fetch("http://localhost:3000/api/items");
+          const data = await response.json();
+          setWorkouts(data.items || []);
+        } catch (error) {
+          console.error("Failed to fetch workouts: ", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchWorkouts();
+    }
   }, [isLoggedIn, id]);
 
   const deleteWorkout = async (id: string) => {
