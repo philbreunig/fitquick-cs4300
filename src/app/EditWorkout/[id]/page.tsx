@@ -32,7 +32,7 @@ export default function EditWorkoutPage() {
       try {
         const response = await fetch(`http://localhost:3000/api/items/${id}`);
         const data = await response.json();
-        setWorkout(data); // Set single workout instead of an array
+        setWorkout(data.item); // Set single workout instead of an array
       } catch (error) {
         console.error("Failed to fetch workout: ", error);
       } finally {

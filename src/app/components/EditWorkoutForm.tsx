@@ -46,6 +46,7 @@ export default function EditWorkoutForm({
   }, [originalWorkout]);
 
   const { workoutName, reps, sets, imageURL, notes, _id } = originalWorkout;
+  console.log(workoutName);
   const [newWorkoutName, setNewWorkoutName] = useState(workoutName);
   const [newReps, setNewReps] = useState(reps);
   const [newSets, setNewSets] = useState(sets);
