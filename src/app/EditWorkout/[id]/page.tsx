@@ -57,7 +57,7 @@ export default function EditWorkoutPage() {
       });
 
       if (response.ok) {
-        //Router.push("/home"); // Redirect to home or another page after successful update
+        Router.push("/"); // Redirect to home or another page after successful update
       } else {
         console.error("Failed to update workout");
       }
@@ -68,7 +68,7 @@ export default function EditWorkoutPage() {
 
   // Handle close (navigate back or set workout to null)
   const handleClose = () => {
-    //Router.push("/home"); // Redirect back to home or any other page
+    Router.push("/"); // Redirect back to home or any other page
   };
 
   // While the workout is loading, show a loading message
