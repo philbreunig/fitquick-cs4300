@@ -1,13 +1,9 @@
 body {
-  margin: 0; /* Remove default margin for full coverage */
-  padding: 0;
+  margin: 0;
   height: 100%;
-  background-color: #6d1ad8; /* Set your desired background color */
+  background-image: url(https://images.unsplash.com/photo-1617957772002-57adde1156fa?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D);
 }
 
-.pageBackground {
-  background-color: #6d1ad8; /* Replace with your desired color */
-}
 .formContainer {
   top: 0;
   left: 0;
@@ -84,4 +80,21 @@ button[type="submit"]:hover {
   color: white;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 3vh;
+}
+
+.editFormContainer {
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+  flex-direction: column;
+}
+.formTitle {
+  font-size: 7vh;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: white;
 }

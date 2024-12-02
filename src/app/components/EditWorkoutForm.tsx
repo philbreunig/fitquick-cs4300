@@ -77,12 +77,14 @@ export default function EditWorkoutForm({
 
   return (
     <div className="pageBackground">
-      <div className="formContainer">
+      <div className="editFormContainer">
+        <h1 className="formTitle">Edit Workout</h1>
         <form onSubmit={handleSubmit}>
           <button type="button" className="closeButton" onClick={onClose}>
             X
           </button>
           <div>
+            <p className="formLabel">WorkoutName</p>
             <input
               type="text"
               placeholder="Workout Name"
@@ -91,6 +93,7 @@ export default function EditWorkoutForm({
             />
           </div>
           <div>
+            <p className="formLabel">Reps</p>
             <input
               type="number"
               placeholder="Reps"
@@ -99,6 +102,7 @@ export default function EditWorkoutForm({
             />
           </div>
           <div>
+            <p className="formLabel">Sets</p>
             <input
               type="number"
               placeholder="Sets"
@@ -107,6 +111,7 @@ export default function EditWorkoutForm({
             />
           </div>
           <div>
+            <p className="formLabel">Reference Image</p>
             <input
               type="text"
               placeholder="Image URL"
@@ -115,6 +120,7 @@ export default function EditWorkoutForm({
             />
           </div>
           <div>
+            <p className="formLabel">Notes</p>
             <textarea
               placeholder="Notes"
               value={newNotes}
