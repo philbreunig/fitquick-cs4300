@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useContext } from "react";
-import { useRouter, useParams, useSearchParams } from "next/navigation"; // Use from next/navigation for app directory
+import { useRouter, useParams, useSearchParams } from "next/navigation";
 import EditWorkoutForm from "../../components/EditWorkoutForm";
 import { AuthContext } from "../../context/user";
 
@@ -20,7 +20,7 @@ export default function EditWorkoutPage() {
   if (!context) throw new Error("Context null.");
   const { isLoggedIn, logout, username } = context;
 
-  const [workout, setWorkout] = useState<Item | null>(null); // Changed to single workout object
+  const [workout, setWorkout] = useState<Item | null>(null);
   const [loading, setLoading] = useState(true);
   const Router = useRouter();
   const { id } = useParams();
@@ -32,7 +32,7 @@ export default function EditWorkoutPage() {
       try {
         const response = await fetch(`http://localhost:3000/api/items/${id}`);
         const data = await response.json();
-        setWorkout(data.item); // Set single workout instead of an array
+        setWorkout(data.item);
       } catch (error) {
         console.error("Failed to fetch workout: ", error);
       } finally {
@@ -43,7 +43,6 @@ export default function EditWorkoutPage() {
     fetchWorkout();
   }, [id]);
 
-  // Handle workout update (PUT request)
   const handleUpdateWorkout = async (editedWorkout: Item) => {
     if (!workout) return;
 
@@ -57,7 +56,7 @@ export default function EditWorkoutPage() {
       });
 
       if (response.ok) {
-        Router.push("/"); // Redirect to home or another page after successful update
+        Router.push("/");
       } else {
         console.error("Failed to update workout");
       }
@@ -66,22 +65,19 @@ export default function EditWorkoutPage() {
     }
   };
 
-  // Handle close (navigate back or set workout to null)
   const handleClose = () => {
-    Router.push("/"); // Redirect back to home or any other page
+    Router.push("/");
   };
 
-  // While the workout is loading, show a loading message
   if (loading) {
     return <div>Loading workout...</div>;
   }
 
-  // Render the EditWorkoutForm only if the workout is available
   return (
     <div>
       {workout && (
         <EditWorkoutForm
-          originalWorkout={workout} // Pass the single workout object
+          originalWorkout={workout}
           onSaveEdits={handleUpdateWorkout}
           onClose={handleClose}
         />

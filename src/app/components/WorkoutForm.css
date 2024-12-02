@@ -55,25 +55,25 @@ button[type="submit"]:hover {
 }
 
 .closeButton {
-  position: absolute; /* Position relative to the form */
-  top: 10px; /* Adjust distance from the top edge of the form */
-  right: 10px; /* Adjust distance from the right edge of the form */
-  background-color: red; /* Choose an appropriate background color */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
   color: white;
   font-size: 20px;
   border: none;
-  border-radius: 50%; /* Make the button round */
-  width: 30px; /* Adjust size */
-  height: 30px; /* Adjust size */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 10; /* Ensure it's above other elements */
+  z-index: 10;
 }
 
 .closeButton:hover {
-  background-color: darkred; /* Change color on hover */
+  background-color: darkred;
 }
 
 .formLabel {
@@ -93,6 +93,7 @@ button[type="submit"]:hover {
   margin-top: 2vh;
   flex-direction: column;
 }
+
 .formTitle {
   font-size: 7vh;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;

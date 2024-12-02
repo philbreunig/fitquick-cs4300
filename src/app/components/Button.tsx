@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import WorkoutForm from "./WorkoutForm"; // Import the form
+import WorkoutForm from "./WorkoutForm";
 import "./Button.css";
 import { useRouter } from "next/navigation";
 

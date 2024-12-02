@@ -101,7 +101,6 @@ export default function Home() {
     }
   };
 
-  // Function to handle the Edit action (for demonstration purposes, just log)
   const handleEdit = (id: string) => {
     console.log("Editing workout with id:", id);
   };

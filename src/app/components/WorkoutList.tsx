@@ -43,7 +43,7 @@ export default function WorkoutList({ workouts, onDelete }: WorkoutProps) {
 
   const handleDelete = (id: string) => {
     if (onDelete) {
-      onDelete(id); // Ensure the delete function is triggered with the correct id
+      onDelete(id);
     } else {
       console.error("Delete function not passed or not defined");
     }
@@ -59,7 +59,7 @@ export default function WorkoutList({ workouts, onDelete }: WorkoutProps) {
           <Workout
             key={workout._id}
             workout={workout}
-            onDelete={isLoggedIn ? handleDelete : undefined} // Pass the correct delete handler
+            onDelete={isLoggedIn ? handleDelete : undefined}
             onEdit={isLoggedIn ? () => handleEdit(workout._id) : undefined}
           />
         ))}

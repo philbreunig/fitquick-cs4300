@@ -19,7 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      router.push("/"); // Redirect to the home page if logged in
+      router.push("/");
     }
   }, [isLoggedIn, router]);
 

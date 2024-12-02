@@ -1,4 +1,3 @@
-// NonAuthSplash.tsx (Unauthenticated Version)
 "use client";
 
 import Style from "./NonAuthSplash.module.css";

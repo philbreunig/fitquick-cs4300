@@ -50,23 +50,6 @@ export default function Home() {
     fetchWorkouts();
   }, [isLoggedIn, id]);
 
-  /* FIX IF YOU CAN GET WORKOUT TO BE ADDED TO USER ARRAY
-
-  useEffect(() => {
-    const fetchWorkouts = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/api/users/${id}`);
-        const data = await response.json();
-        setWorkouts(data.workouts || []);
-      } catch (error) {
-        console.error("Failed to fetch my workouts: ", error);
-      }
-    };
-    fetchWorkouts();
-  }, []);
-
-  */
-
   const addWorkout = async (newWorkout: Omit<Workout, "_id">) => {
     try {
       const response = await fetch("/api/items", {
