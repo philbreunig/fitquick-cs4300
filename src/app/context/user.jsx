@@ -42,7 +42,8 @@ const AuthProvider = ({ children }) => {
         body: JSON.stringify({ email, password }),
       });
       if (!response.ok) {
-        throw new Error(`Response error: ${response.status}`);
+        alert("Username or password incorrect.");
+        return;
       }
       const data = await response.json();
       setId(data.user.id);
@@ -57,9 +58,7 @@ const AuthProvider = ({ children }) => {
         console.error("Error saving to localStorage:", error);
       }
     } catch (error) {
-      console.error("Login failed:", error);
-      alert("Username or password incorrect.");
-      throw new Error("Username/password incorrect.");
+
     }
   };
 
