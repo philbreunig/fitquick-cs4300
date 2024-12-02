@@ -36,11 +36,14 @@ export default function Login({ onLogin }: LoginProps) {
 
       await login(email, password);
       router.push(`/`);
+      // Force a full page reload
+      window.location.reload();
     } catch (err) {
       setEmail("");
       setPassword("");
     }
   };
+
   return (
     <div className={Style.background}>
       <div className={Style.container}>

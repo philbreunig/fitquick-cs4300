@@ -44,7 +44,7 @@ textarea {
 }
 
 button[type="submit"] {
-  background-color: #4caf50;
+  background-color: #46ad49;
   color: white;
   padding: 10px;
   border: none;
@@ -55,7 +55,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #46ad49;
 }
 
 .closeButton {
