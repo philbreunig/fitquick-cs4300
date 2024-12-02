@@ -31,7 +31,7 @@ export default function Signup({ onAddUser }: SignupProps) {
   const [id, setId] = useState("");
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!username || !password) {
       alert("Username and Password are required");
@@ -48,13 +48,15 @@ export default function Signup({ onAddUser }: SignupProps) {
       password: password,
       workouts: [],
     };
-    onAddUser(newUser);
-    setName("");
-    setEmail("");
-    setUsername("");
-    setPassword("");
-    setId("");
-    router.push("/Login");
+    try {
+      await onAddUser(newUser);
+      setName("");
+      setEmail("");
+      setUsername("");
+      setPassword("");
+      setId("");
+      router.push("/Login");
+    } catch (err) {}
   };
   return (
     <div className={Style.background}>

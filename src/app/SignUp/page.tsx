@@ -48,25 +48,26 @@ export default function Home() {
   const [users, setUsers] = useState<any[]>([]);
 
   const addNewUser = async (newUser: Omit<User, "_id">) => {
-    try {
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      });
-      if (response.ok) {
-        const savedUsers = await response.json();
-        setUsers([
-          ...users,
-          { ...newUser, _id: savedUsers.user?._id ?? "Temporary ID" },
-        ]);
-      } else {
-        console.error("Failed to add user");
-      }
-    } catch (error) {
-      console.error("Error: ", error);
+    const response = await fetch("/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+    if (!response.ok) {
+      alert("Email is already registered.");
+      throw new Error("Registration failed.");
+      return;
+    }
+    if (response.ok) {
+      const savedUsers = await response.json();
+      setUsers([
+        ...users,
+        { ...newUser, _id: savedUsers.user?._id ?? "Temporary ID" },
+      ]);
+    } else {
+      console.error("Failed to add user");
     }
   };
 
