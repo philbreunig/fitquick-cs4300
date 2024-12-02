@@ -1,4 +1,3 @@
-// WorkoutList.tsx
 "use client";
 
 if (process.env.NODE_ENV === "development") {
@@ -42,6 +41,14 @@ export default function WorkoutList({ workouts, onDelete }: WorkoutProps) {
     router.push(`/EditWorkout/${workoutId}`);
   };
 
+  const handleDelete = (id: string) => {
+    if (onDelete) {
+      onDelete(id); // Ensure the delete function is triggered with the correct id
+    } else {
+      console.error("Delete function not passed or not defined");
+    }
+  };
+
   return (
     <div>
       {workouts
@@ -52,7 +59,7 @@ export default function WorkoutList({ workouts, onDelete }: WorkoutProps) {
           <Workout
             key={workout._id}
             workout={workout}
-            onDelete={isLoggedIn ? () => onDelete : undefined}
+            onDelete={isLoggedIn ? handleDelete : undefined} // Pass the correct delete handler
             onEdit={isLoggedIn ? () => handleEdit(workout._id) : undefined}
           />
         ))}

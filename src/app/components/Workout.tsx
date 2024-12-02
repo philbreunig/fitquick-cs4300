@@ -14,7 +14,7 @@ type WorkoutProps = {
     notes: string;
   };
   onDelete?: (id: string) => void;
-  onEdit?: (id: string) => void; // Optional onEdit prop
+  onEdit?: (id: string) => void;
 };
 
 export default function Workout({ workout, onDelete, onEdit }: WorkoutProps) {
