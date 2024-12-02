@@ -8,9 +8,10 @@ export async function POST(request: NextRequest) {
   const { name, username, email, password, workouts } = await request.json();
   await connectMongoDB();
   const existingUser = await User.findOne({ email });
-  if (existingUser) {
+  const existingUser2 = await User.findOne({ username });
+  if (existingUser || existingUser2) {
     return NextResponse.json(
-        { message: "Email is already registered."},
+        { message: "User is already registered."},
         { status: 400 }
     );
   }
