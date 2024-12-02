@@ -58,7 +58,10 @@ export default function Home() {
       });
       if (response.ok) {
         const savedUsers = await response.json();
-        setUsers([...users, { ...newUser, _id: savedUsers.user._id }]);
+        setUsers([
+          ...users,
+          { ...newUser, _id: savedUsers.user?._id ?? "Temporary ID" },
+        ]);
       } else {
         console.error("Failed to add user");
       }
