@@ -56,7 +56,7 @@ export default function Home() {
       body: JSON.stringify(newUser),
     });
     if (!response.ok) {
-      alert("Email is already registered.");
+      alert("Email and/or username is already registered.");
       throw new Error("Registration failed.");
       return;
     }
